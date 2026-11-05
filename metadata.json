@@ -1,0 +1,6 @@
+{
+  "name": "SKAS | KGKT Management Tracker",
+  "description": "2026 Club Member Monthly Payment, Status Matrix, and Budget Expense Tracker for SKAS KGKT Management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

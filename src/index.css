@@ -1,0 +1,174 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root,
+  [data-theme="botanical"] {
+    --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-sans: 'Public Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+    /* Trending 2026 Default: Botanical Forest Teal & Sage Alabaster */
+    --bg-canvas: #F3F6F4;
+    --bg-surface: #FFFFFF;
+    --bg-subtle: #E9EFECE6;
+    --bg-tab-rail: #E2EBE6;
+    --border-color: #D5E0DA;
+    --border-strong: #B8C9C0;
+    --text-primary: #0D1F18;
+    --text-secondary: #435950;
+    --text-muted: #647A70;
+    --accent-primary: #0F766E;
+    --accent-hover: #115E59;
+    --accent-soft: #CCFBF1;
+    --accent-soft-border: #99F6E4;
+    --accent-text: #0F766E;
+    --paid-bg: #059669;
+    --unpaid-bg: #E11D48;
+  }
+
+  [data-theme="terracotta"] {
+    /* Trending 2026 Editorial: Warm Sand & Burnt Terracotta Bronze */
+    --bg-canvas: #F7F4EF;
+    --bg-surface: #FFFFFF;
+    --bg-subtle: #EFECE6;
+    --bg-tab-rail: #E6E1D8;
+    --border-color: #DFD9CE;
+    --border-strong: #C7BEB0;
+    --text-primary: #1C1917;
+    --text-secondary: #57534E;
+    --text-muted: #78716C;
+    --accent-primary: #C2410C;
+    --accent-hover: #9A3412;
+    --accent-soft: #FFEDD5;
+    --accent-soft-border: #FED7AA;
+    --accent-text: #C2410C;
+    --paid-bg: #15803D;
+    --unpaid-bg: #BE123C;
+  }
+
+  [data-theme="cobalt"] {
+    /* Trending 2026 Neo-Fintech: Cool Zinc & Electric Cobalt */
+    --bg-canvas: #F4F6FA;
+    --bg-surface: #FFFFFF;
+    --bg-subtle: #EDF1F7;
+    --bg-tab-rail: #E2E8F0;
+    --border-color: #DCE3ED;
+    --border-strong: #CBD5E1;
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #64748B;
+    --accent-primary: #1D4ED8;
+    --accent-hover: #1E40AF;
+    --accent-soft: #DBEAFE;
+    --accent-soft-border: #BFDBFE;
+    --accent-text: #1D4ED8;
+    --paid-bg: #059669;
+    --unpaid-bg: #E11D48;
+  }
+
+  [data-theme="obsidian"] {
+    /* Trending 2026 Executive Dark: Deep Obsidian & Emerald Mint */
+    --bg-canvas: #0B1114;
+    --bg-surface: #121B20;
+    --bg-subtle: #18242B;
+    --bg-tab-rail: #172229;
+    --border-color: #23323B;
+    --border-strong: #324652;
+    --text-primary: #F1F5F9;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+    --accent-primary: #10B981;
+    --accent-hover: #059669;
+    --accent-soft: #064E3B;
+    --accent-soft-border: #047857;
+    --accent-text: #34D399;
+    --paid-bg: #059669;
+    --unpaid-bg: #E11D48;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 180ms ease, color 180ms ease;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.theme-canvas {
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+}
+
+.theme-surface {
+  background-color: var(--bg-surface);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.theme-subtle {
+  background-color: var(--bg-subtle);
+  border-color: var(--border-color);
+}
+
+.theme-tab-rail {
+  background-color: var(--bg-tab-rail);
+}
+
+.theme-border {
+  border-color: var(--border-color);
+}
+
+.theme-text-primary {
+  color: var(--text-primary);
+}
+
+.theme-text-secondary {
+  color: var(--text-secondary);
+}
+
+.theme-text-muted {
+  color: var(--text-muted);
+}
+
+.theme-accent-text {
+  color: var(--accent-text);
+}
+
+.theme-btn-primary {
+  background-color: var(--accent-primary);
+  color: #FFFFFF;
+}
+
+.theme-btn-primary:hover:not(:disabled) {
+  background-color: var(--accent-hover);
+}
+
+.theme-btn-soft {
+  background-color: var(--accent-soft);
+  color: var(--accent-text);
+  border-color: var(--accent-soft-border);
+}
+
+.theme-input {
+  background-color: var(--bg-surface);
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+}
+
+.theme-input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px var(--accent-soft);
+}

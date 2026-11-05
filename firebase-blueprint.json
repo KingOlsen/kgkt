@@ -1,0 +1,211 @@
+{
+  "entities": {
+    "Member": {
+      "title": "Member",
+      "description": "A club member tracked in the shared SKAS KGKT payment system.",
+      "type": "object",
+      "properties": {
+        "memberName": {
+          "type": "string",
+          "description": "Uppercase display name of the club member.",
+          "minLength": 1,
+          "maxLength": 100,
+          "pattern": "^[A-Z0-9 .,'&()\\-/]+$"
+        },
+        "ownerId": {
+          "type": "string",
+          "description": "Workspace identifier for cross-device sync (e.g. skas_kgkt_shared).",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the member record was created."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the member record was last updated."
+        }
+      },
+      "required": ["memberName", "ownerId", "createdAt", "updatedAt"]
+    },
+    "Payment": {
+      "title": "Payment",
+      "description": "A monthly membership fee payment record for a specific club member.",
+      "type": "object",
+      "properties": {
+        "memberId": {
+          "type": "string",
+          "description": "Document ID of the associated member in the /members collection.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "memberName": {
+          "type": "string",
+          "description": "Uppercase display name of the club member.",
+          "minLength": 1,
+          "maxLength": 100,
+          "pattern": "^[A-Z0-9 .,'&()\\-/]+$"
+        },
+        "months": {
+          "type": "string",
+          "description": "Comma-separated list of months covered by this payment.",
+          "minLength": 3,
+          "maxLength": 200,
+          "pattern": "^[A-Za-z, ]+$"
+        },
+        "feeAmount": {
+          "type": "number",
+          "description": "Total fee amount paid in dollars."
+        },
+        "paymentDate": {
+          "type": "string",
+          "description": "ISO calendar date (YYYY-MM-DD) when the payment was recorded.",
+          "minLength": 10,
+          "maxLength": 10,
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "ownerId": {
+          "type": "string",
+          "description": "Workspace identifier for cross-device sync (e.g. skas_kgkt_shared).",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the payment record was created."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the payment record was last updated."
+        }
+      },
+      "required": ["memberId", "memberName", "months", "feeAmount", "paymentDate", "ownerId", "createdAt", "updatedAt"]
+    },
+    "Transaction": {
+      "title": "Transaction",
+      "description": "An income or expense transaction in the club budget ledger.",
+      "type": "object",
+      "properties": {
+        "transactionType": {
+          "type": "string",
+          "description": "Whether the transaction is income or expense.",
+          "enum": ["income", "expense"],
+          "minLength": 6,
+          "maxLength": 7
+        },
+        "category": {
+          "type": "string",
+          "description": "Uppercase category label for the budget transaction.",
+          "minLength": 1,
+          "maxLength": 100,
+          "pattern": "^[A-Z0-9 &.,'()\\-/]+$"
+        },
+        "amount": {
+          "type": "number",
+          "description": "Monetary amount of the transaction."
+        },
+        "description": {
+          "type": "string",
+          "description": "Uppercase description of the budget transaction.",
+          "minLength": 1,
+          "maxLength": 300,
+          "pattern": "^[A-Z0-9 &.,'()\\-/#$:;!?+]+$"
+        },
+        "transactionDate": {
+          "type": "string",
+          "description": "ISO calendar date (YYYY-MM-DD) of the transaction.",
+          "minLength": 10,
+          "maxLength": 10,
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "ownerId": {
+          "type": "string",
+          "description": "Workspace identifier for cross-device sync (e.g. skas_kgkt_shared).",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the transaction was created."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the transaction was last updated."
+        }
+      },
+      "required": ["transactionType", "category", "amount", "description", "transactionDate", "ownerId", "createdAt", "updatedAt"]
+    },
+    "ClubConfig": {
+      "title": "ClubConfig",
+      "description": "Shared club workspace configuration settings.",
+      "type": "object",
+      "properties": {
+        "clubTitle": {
+          "type": "string",
+          "description": "Display title of the club organization.",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "pageTitle": {
+          "type": "string",
+          "description": "Subtitle of the payment and expense tracker.",
+          "minLength": 1,
+          "maxLength": 150
+        },
+        "buttonText": {
+          "type": "string",
+          "description": "Custom label for the primary payment submission button.",
+          "minLength": 1,
+          "maxLength": 60
+        },
+        "ownerId": {
+          "type": "string",
+          "description": "Workspace identifier for cross-device sync.",
+          "minLength": 1,
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the config was created."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when the config was last updated."
+        }
+      },
+      "required": ["clubTitle", "pageTitle", "buttonText", "ownerId", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/members/{memberId}": {
+      "schema": { "$ref": "#/entities/Member" },
+      "description": "Stores club members synced across all devices."
+    },
+    "/payments/{paymentId}": {
+      "schema": { "$ref": "#/entities/Payment" },
+      "description": "Stores monthly membership fee payment records linked to a member."
+    },
+    "/transactions/{transactionId}": {
+      "schema": { "$ref": "#/entities/Transaction" },
+      "description": "Stores club budget income and expense ledger transactions."
+    },
+    "/settings/{settingId}": {
+      "schema": { "$ref": "#/entities/ClubConfig" },
+      "description": "Stores shared workspace customization settings."
+    }
+  }
+}

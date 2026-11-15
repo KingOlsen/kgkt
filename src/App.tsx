@@ -95,6 +95,22 @@ function generateValidId(prefix: string): string {
 export default function App() {
   const [dataLoading, setDataLoading] = useState(true);
 
+  useEffect(() => {
+    try {
+      const url = new URL(window.location.href);
+      if (url.searchParams.has('__aistudio_auth_token')) {
+        url.searchParams.delete('__aistudio_auth_token');
+        const cleanUrl =
+          url.pathname +
+          (url.searchParams.toString() ? `?${url.searchParams.toString()}` : '') +
+          url.hash;
+        window.history.replaceState({}, document.title, cleanUrl);
+      }
+    } catch {
+      // Ignore URL cleanup errors in restricted environments
+    }
+  }, []);
+
   const [themeScheme, setThemeScheme] = useState<ThemeSchemeId>(() => {
     const saved = localStorage.getItem('kgkt_theme_scheme') as ThemeSchemeId | null;
     if (saved && TRENDING_THEMES.some((t) => t.id === saved)) {
